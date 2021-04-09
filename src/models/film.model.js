@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: "Movie",
       },
       character_id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: true,
         onDelete: 'CASCADE',
         references: {
