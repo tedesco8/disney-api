@@ -1,8 +1,9 @@
 const sequelize = require("sequelize");
 const { compareSync, hashSync, genSaltSync } = require("bcryptjs");
+
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
+  const Character = sequelize.define(
     "user",
     {
       name: {
@@ -13,36 +14,33 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      email: {
+      image: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
+        allowNull: true,
       },
-      password: {
+      biografy: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
-      status: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true,
+      age: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      weight: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       create_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
-      },
-      token_change_password: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      created_at_token_change: {
-        type: DataTypes.DATE,
-        allowNull: true,
-      },
+      }
     },
     {
       timestamps: false,
     }
   );
 
-  return User;
+  Character.hasMany(Film, {as: 'film', foreignKey: 'character_id'});
+
+  return Character;
 };

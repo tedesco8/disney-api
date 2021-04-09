@@ -1,5 +1,5 @@
 {
-  "name": "apinodeclean-sgrc",
+  "name": "disney-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,9 +10,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/outboxdev/apinodeclean-sgrc.git"
+    "url": "git+https://github.com/tedesco8/disney-api.git"
   },
-  "author": "OutboxDev",
+  "author": "Pablo Tedesco",
   "license": "ISC",
   "dependencies": {
     "awilix": "^4.2.7",
@@ -35,9 +35,5 @@
     "mockingoose": "^2.13.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6"
-  },
-  "bugs": {
-    "url": "https://github.com/outboxdev/apinodeclean-sgrc/issues"
-  },
-  "homepage": "https://github.com/outboxdev/apinodeclean-sgrc#readme"
+  }
 }
