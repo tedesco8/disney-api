@@ -1,39 +1,39 @@
-"use strict";
+'use strict';
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    queryInterface.createTable("film", {
+    queryInterface.createTable("performance", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      type: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "Movie",
-      },
-      title: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      image: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      reputation: {
+      character_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
-        defaultValue: 0,
+        onDelete: "CASCADE",
+        references: {
+          model: "character",
+          key: "id",
+        },
+      },
+      film_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        onDelete: "CASCADE",
+        references: {
+          model: "film",
+          key: "id",
+        },
       },
       create_at: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
       },
-    });
+    })
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("film");
-  },
+    await queryInterface.dropTable("performance");
+  }
 };

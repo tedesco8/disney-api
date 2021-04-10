@@ -31,6 +31,18 @@ class BaseRepository {
         });
       });
   }
+
+  async delete(id, entity) {
+    await this.model
+      .finOne({
+        where: { id: id },
+      })
+      .then((user) => {
+        user.delete(entity).then((reg) => {
+          return reg;
+        });
+      });
+  }
 }
 
 module.exports = BaseRepository;
