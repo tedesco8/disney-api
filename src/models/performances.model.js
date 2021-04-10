@@ -1,52 +1,43 @@
 const sequelize = require("sequelize");
 const { compareSync, hashSync, genSaltSync } = require("bcryptjs");
 
-"use strict";
+("use strict");
 module.exports = (sequelize, DataTypes) => {
-  const Film = sequelize.define(
-    "film",
+  const Performances = sequelize.define(
+    "performances",
     {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      type: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue: "Movie",
-      },
       character_id: {
         type: DataTypes.INTEGER,
         allowNull: true,
-        onDelete: 'CASCADE',
+        onDelete: "CASCADE",
         references: {
           model: "character",
           key: "id",
         },
       },
-      title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      image: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      reputation: {
+      film_id: {
         type: DataTypes.INTEGER,
         allowNull: true,
-        defaultValue: 0,
+        onDelete: "CASCADE",
+        references: {
+          model: "film",
+          key: "id",
+        },
       },
       create_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
-      }
+      },
     },
     {
       timestamps: false,
     }
   );
 
-  return Character;
+  return Performances;
 };
