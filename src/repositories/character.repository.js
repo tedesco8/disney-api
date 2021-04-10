@@ -22,7 +22,7 @@ class CharacterRepository extends BaseRepository {
   }
 
   async getAll() {
-    return await this.model.findAll({
+    return await _character.findAll({
       attributes: ["name", "image"],
     });
   }
