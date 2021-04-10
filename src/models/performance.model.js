@@ -3,8 +3,8 @@ const { compareSync, hashSync, genSaltSync } = require("bcryptjs");
 
 ("use strict");
 module.exports = (sequelize, DataTypes) => {
-  const Performances = sequelize.define(
-    "performances",
+  const Performance = sequelize.define(
+    "performance",
     {
       id: {
         type: Sequelize.INTEGER,
@@ -39,5 +39,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  return Performances;
+  return Performance;
 };

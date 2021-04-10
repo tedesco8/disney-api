@@ -1,12 +1,12 @@
 const BaseRepository = require("./base.repository");
 let _film = null;
-let _performances = null;
+let _performance = null;
 
 class FilmRepository extends BaseRepository {
-  constructor({ Film, Performances }) {
+  constructor({ Film, Performance }) {
     super(Film);
     _film = Film;
-    _performances = Performances;
+    _performance = Performance;
   }
 
   async get(id) {
@@ -14,8 +14,8 @@ class FilmRepository extends BaseRepository {
       where: { id: id },
       include: [
         {
-          model: _performances,
-          as: "performances",
+          model: _performance,
+          as: "performance",
         },
       ],
     });

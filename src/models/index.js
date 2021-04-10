@@ -1,6 +1,6 @@
 module.exports = {
   User: require("./user.model"),
   Character: require("./character.model"),
-  Performances: require("./performances.model"),
+  Performance: require("./performance.model"),
   Film: require("./film.model"),
 };

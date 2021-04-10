@@ -1,12 +1,12 @@
 const BaseRepository = require("./base.repository");
 let _character = null;
-let _performances = null;
+let _performance = null;
 
 class CharacterRepository extends BaseRepository {
-  constructor({ Character, Performances }) {
+  constructor({ Character, Performance }) {
     super(Character);
     _character = Character;
-    _performances = Performances;
+    _performance = Performance;
   }
 
   async get(id) {
@@ -14,8 +14,8 @@ class CharacterRepository extends BaseRepository {
       where: { id: id },
       include: [
         {
-          model: _performances,
-          as: "performances",
+          model: _performance,
+          as: "performance",
         },
       ],
     });
