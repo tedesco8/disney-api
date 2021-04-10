@@ -1,9 +1,12 @@
 const { Router } = require("express")
 
-module.exports = function({ CharacterController }){
-    const router = Router()
+module.exports = function ({ CharacterController }) {
+  const router = Router()
 
-    router.get("/", CharacterController.index)
+  router.get("/:characterId", CharacterController.get)
+  router.get("", CharacterController.getAll)
+  router.put("/:characterId", CharacterController.update)
+  router.post("", CharacterController.create)
 
-    return router
-}
+  return router
+};

@@ -5,13 +5,13 @@ const config = require("../config")
 const app = require(".")
 
 //services
-const { CharacterService, UserService } = require("../services")
+const { FilmService, CharacterService, UserService } = require("../services")
 
 //controllers
-const { CharacterController, UserController } = require("../controllers")
+const { FilmController, CharacterController, UserController } = require("../controllers")
 
 //routes
-const { CharacterRoutes, UserRoutes } = require("../routes/index.routes")
+const { FilmRoutes, CharacterRoutes, UserRoutes } = require("../routes/index.routes")
 const Routes = require("../routes")
 
 //models
@@ -34,18 +34,21 @@ container
   .register({
     CharacterService: asClass(CharacterService).singleton(),
     UserService: asClass(UserService).singleton(),
+    FilmService: asClass(FilmService).singleton()
   })
   //controllers
   .register({
     //le agregamos el metodo bind para que no pierda el scope
     CharacterController: asClass(CharacterController.bind(CharacterController)).singleton(),
     UserController: asClass(UserController.bind(UserController)).singleton(),
+    FilmController: asClass(FilmController.bind(FilmController)).singleton()
   })
   //rutas
   .register({
     //as function porque devolvemos una funcion, no una clase.
     CharacterRoutes: asFunction(CharacterRoutes).singleton(),
     UserRoutes: asFunction(UserRoutes).singleton(),
+    FilmRoutes: asFunction(FilmRoutes).singleton()
   })
   //modelos
   .register({
