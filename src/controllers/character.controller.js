@@ -29,6 +29,13 @@ class CharacterController {
         const updateCharacter = await _characterService.update(characterId, body)
         return res.send(updateCharacter)
     }
+
+    async delete(req, res) {
+        const { body } = req
+        const { characterId } = req.params
+        const deleteCharacter = await _characterService.delete(characterId)
+        return res.send(deleteCharacter)
+    }
 }
 
 module.exports = CharacterController

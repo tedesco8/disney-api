@@ -30,6 +30,12 @@ class UserController {
         const updateUser = await _userService.update(userId, body)
         return res.send(updateUser)
     }
+
+    async delete(req, res) {
+        const { userId } = req.params
+        const user = await _userService.delete(userId)
+        return res.send(user)
+    }
 }
 
 module.exports = UserController

@@ -7,6 +7,7 @@ module.exports = function ({ FilmController }) {
   router.get("", FilmController.getAll)
   router.put("/:filmId", FilmController.update)
   router.post("", FilmController.create)
+  router.delete("/:filmId", FilmController.delete)
 
   return router
 };

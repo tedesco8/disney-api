@@ -29,6 +29,12 @@ class FilmController {
         const updateFilm = await _filmService.update(filmId, body)
         return res.send(updateFilm)
     }
+
+    async delete(req, res) {
+        const { filmId } = req.params
+        const film = await _filmService.delete(filmId)
+        return res.send(film)
+    }
 }
 
 module.exports = FilmController

@@ -29,6 +29,12 @@ class PerformanceController {
         const updatePerformance = await _performanceService.update(performanceId, body)
         return res.send(updatePerformance)
     }
+
+    async delete(req, res) {
+        const { performanceId } = req.params
+        const performance = await _performanceService.delete(performanceId)
+        return res.send(performance)
+    }
 }
 
 module.exports = PerformanceController

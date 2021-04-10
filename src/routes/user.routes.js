@@ -7,6 +7,7 @@ module.exports = function ({ UserController }) {
   router.get("", UserController.getAll)
   router.put("/:userId", UserController.update)
   router.post("", UserController.create)
+  router.delete("/:userId", UserController.delete)
 
   return router
 };

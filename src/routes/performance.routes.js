@@ -7,6 +7,7 @@ module.exports = function ({ PerformanceController }) {
   router.get("", PerformanceController.getAll)
   router.put("/:performanceId", PerformanceController.update)
   router.post("", PerformanceController.create)
+  router.delete("/:performanceId", PerformanceController.delete)
 
   return router
 };

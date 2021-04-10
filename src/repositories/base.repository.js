@@ -38,7 +38,7 @@ class BaseRepository {
         where: { id: id },
       })
       .then((user) => {
-        user.delete(entity).then((reg) => {
+        user.destroy(entity).then((reg) => {
           return reg;
         });
       });

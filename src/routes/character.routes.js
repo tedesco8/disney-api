@@ -7,6 +7,7 @@ module.exports = function ({ CharacterController }) {
   router.get("", CharacterController.getAll)
   router.put("/:characterId", CharacterController.update)
   router.post("", CharacterController.create)
+  router.delete("/:characterId", CharacterController.delete)
 
   return router
 };
