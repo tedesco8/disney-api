@@ -18,7 +18,7 @@ const Routes = require("../routes")
 const { Performances, Film, Character, User } = require("../models")
 
 //repositories
-const { CharacterRepository, UserRepository } = require("../repositories")
+const { FilmRepository, CharacterRepository, UserRepository } = require("../repositories")
 
 const container = createContainer()
 
@@ -61,6 +61,7 @@ container
   .register({
     UserRepository: asClass(UserRepository).singleton(),
     CharacterRepository: asClass(CharacterRepository).singleton(),
+    FilmRepository: asClass(FilmRepository).singleton()
   })
 
 module.exports = container

@@ -1,6 +1,6 @@
 const BaseRepository = require("./base.repository");
 let _character = null;
-let _film = null;
+let _performances = null;
 
 class CharacterRepository extends BaseRepository {
   constructor({ Character, Performances }) {

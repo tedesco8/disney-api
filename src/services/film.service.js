@@ -1,9 +1,14 @@
-class FilmService {
-    index() {
-      return {
-        message: "Hello World!",
-      };
-    }
+const BaseService = require("./base.service");
+let _filmRepository = null;
+class FilmService extends BaseService {
+  constructor({ FilmRepository }) {
+    super(FilmRepository);
+    _filmRepository = FilmRepository;
   }
-  
-  module.exports = FilmService;
+
+  async getFilmByName(name) {
+    return await _filmRepository.getFilmByName(name);
+  }
+}
+
+module.exports = FilmService;
