@@ -48,5 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  return Character;
+  Film.hasMany(Performances, {as: 'performances', foreignKey: 'film_id'});
+
+  return Film;
 };

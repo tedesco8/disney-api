@@ -4,7 +4,7 @@ const { compareSync, hashSync, genSaltSync } = require("bcryptjs");
 "use strict";
 module.exports = (sequelize, DataTypes) => {
   const Character = sequelize.define(
-    "user",
+    "character",
     {
       id: {
         type: Sequelize.INTEGER,
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Character.hasMany(Film, {as: 'film', foreignKey: 'character_id'});
+  Character.hasMany(Performances, {as: 'performances', foreignKey: 'character_id'});
 
   return Character;
 };

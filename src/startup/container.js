@@ -15,7 +15,7 @@ const { CharacterRoutes, UserRoutes } = require("../routes/index.routes")
 const Routes = require("../routes")
 
 //models
-const { Film, Character, User } = require("../models")
+const { Performances, Film, Character, User } = require("../models")
 
 //repositories
 const { CharacterRepository, UserRepository } = require("../repositories")
@@ -51,6 +51,7 @@ container
   .register({
     User: asValue(User),
     Character: asValue(Character),
+    Performances: asValue(Performances),
     Film: asValue(Film)
   })
   //repositories

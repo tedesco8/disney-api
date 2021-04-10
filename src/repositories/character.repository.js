@@ -3,10 +3,10 @@ let _character = null;
 let _film = null;
 
 class CharacterRepository extends BaseRepository {
-  constructor({ Character, Film }) {
+  constructor({ Character, Performances }) {
     super(Character);
     _character = Character;
-    _film = Film;
+    _performances = Performances;
   }
 
   async get(id) {
@@ -14,8 +14,8 @@ class CharacterRepository extends BaseRepository {
       where: { id: id },
       include: [
         {
-          model: _film,
-          as: "film",
+          model: _performances,
+          as: "performances",
         },
       ],
     });
