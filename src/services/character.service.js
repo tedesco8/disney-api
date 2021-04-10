@@ -1,4 +1,4 @@
-class HomeService {
+class CharacterService {
   index() {
     return {
       message: "Hello World!",
@@ -6,4 +6,4 @@ class HomeService {
   }
 }
 
-module.exports = HomeService;
+module.exports = CharacterService;

@@ -5,20 +5,20 @@ const config = require("../config")
 const app = require(".")
 
 //services
-const { HomeService, UserService } = require("../services")
+const { CharacterService, UserService } = require("../services")
 
 //controllers
-const { HomeController, UserController } = require("../controllers")
+const { CharacterController, UserController } = require("../controllers")
 
 //routes
-const { HomeRoutes, UserRoutes } = require("../routes/index.routes")
+const { CharacterRoutes, UserRoutes } = require("../routes/index.routes")
 const Routes = require("../routes")
 
 //models
 const { User } = require("../models")
 
 //repositories
-const { UserRepository } = require("../repositories")
+const { CharacterRepository, UserRepository } = require("../repositories")
 
 const container = createContainer()
 
@@ -32,19 +32,19 @@ container
   })
   //servicios
   .register({
-    HomeService: asClass(HomeService).singleton(),
+    CharacterService: asClass(CharacterService).singleton(),
     UserService: asClass(UserService).singleton(),
   })
   //controllers
   .register({
     //le agregamos el metodo bind para que no pierda el scope
-    HomeController: asClass(HomeController.bind(HomeController)).singleton(),
+    CharacterController: asClass(CharacterController.bind(CharacterController)).singleton(),
     UserController: asClass(UserController.bind(UserController)).singleton(),
   })
   //rutas
   .register({
     //as function porque devolvemos una funcion, no una clase.
-    HomeRoutes: asFunction(HomeRoutes).singleton(),
+    CharacterRoutes: asFunction(CharacterRoutes).singleton(),
     UserRoutes: asFunction(UserRoutes).singleton(),
   })
   //modelos
@@ -53,7 +53,8 @@ container
   })
   //repositories
   .register({
-    UserRepository: asClass(UserRepository).singleton()
+    UserRepository: asClass(UserRepository).singleton(),
+    CharacterRepository: asClass(CharacterRepository).singleton(),
   })
 
 module.exports = container

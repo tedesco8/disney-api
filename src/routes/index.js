@@ -6,7 +6,7 @@ const morgan = require("morgan")
 require("express-async-errors")
 const { NotFoundMiddleware, ErrorMiddleware } = require("../middlewares");
 
-module.exports = function ({ HomeRoutes, UserRoutes }) { 
+module.exports = function ({ CharacterRoutes, UserRoutes }) { 
   const router = express.Router()
   const apiRoutes = express.Router()
 
@@ -17,7 +17,7 @@ module.exports = function ({ HomeRoutes, UserRoutes }) {
     .use(helmet())
     .use(compression());
 
-    apiRoutes.use("/home", HomeRoutes)
+    apiRoutes.use("/character", CharacterRoutes)
     apiRoutes.use("/user", UserRoutes)
 
     router.use("/v1/api", apiRoutes)

@@ -1,4 +1,4 @@
 module.exports = {
-  HomeService: require("./home.service"),
+  CharacterService: require("./character.service"),
   UserService: require("./user.service")
 };
