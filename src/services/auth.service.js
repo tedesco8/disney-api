@@ -9,14 +9,18 @@ class AuthService {
   }
 
   async signUp(user) {
-    const { useremail } = user;
-    const userExist = await _userService.getUserByEmail(useremail);
+    const { email } = user;
+    const userExist = await _userService.getUserByEmail(email);
     if (userExist) {
       const error = new Error();
       error.status = 401;
       error.message = "User already exist";
       throw error;
     }
+
+    const salt = genSaltSync(10);
+    const hashedPassword = hashSync(user.password, salt);
+    user.password = hashedPassword;
 
     return await _userService.create(user);
   }
@@ -54,4 +58,4 @@ class AuthService {
   }
 }
 
-module.exports = AuthService
+module.exports = AuthService;
