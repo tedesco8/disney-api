@@ -19,6 +19,7 @@ class CharacterController {
 
     async create(req, res) {
         const { body } = req
+        // console.log(body)
         const character = await _characterService.create(body)
         return res.send(character)
     }
