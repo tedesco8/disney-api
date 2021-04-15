@@ -7,9 +7,9 @@ class UserRepository extends BaseRepository{
         _user = User
     }
 
-    async getUserByName(name) {
+    async getUserByEmail(email) {
         return await _user.finOne({
-            where: {name:name}
+            where: {email:email}
         })
     }
 }
