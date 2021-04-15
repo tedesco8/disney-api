@@ -5,13 +5,13 @@ const config = require("../config")
 const app = require(".")
 
 //services
-const { PerformanceService, FilmService, CharacterService, UserService } = require("../services")
+const { AuthService, PerformanceService, FilmService, CharacterService, UserService } = require("../services")
 
 //controllers
-const { PerformanceController, FilmController, CharacterController, UserController } = require("../controllers")
+const { AuthController, PerformanceController, FilmController, CharacterController, UserController } = require("../controllers")
 
 //routes
-const { PerformanceRoutes, FilmRoutes, CharacterRoutes, UserRoutes } = require("../routes/index.routes")
+const { AuthRoutes, PerformanceRoutes, FilmRoutes, CharacterRoutes, UserRoutes } = require("../routes/index.routes")
 const Routes = require("../routes")
 
 //models
@@ -35,7 +35,8 @@ container
     CharacterService: asClass(CharacterService).singleton(),
     UserService: asClass(UserService).singleton(),
     FilmService: asClass(FilmService).singleton(),
-    PerformanceService: asClass(PerformanceService).singleton()
+    PerformanceService: asClass(PerformanceService).singleton(),
+    AuthService: asClass(AuthService).singleton()
   })
   //controllers
   .register({
@@ -43,7 +44,8 @@ container
     CharacterController: asClass(CharacterController.bind(CharacterController)).singleton(),
     UserController: asClass(UserController.bind(UserController)).singleton(),
     FilmController: asClass(FilmController.bind(FilmController)).singleton(),
-    PerformanceController: asClass(PerformanceController.bind(PerformanceController)).singleton()
+    PerformanceController: asClass(PerformanceController.bind(PerformanceController)).singleton(),
+    AuthController: asClass(AuthController.bind(AuthController)).singleton(),
   })
   //rutas
   .register({
@@ -51,7 +53,8 @@ container
     CharacterRoutes: asFunction(CharacterRoutes).singleton(),
     UserRoutes: asFunction(UserRoutes).singleton(),
     FilmRoutes: asFunction(FilmRoutes).singleton(),
-    PerformanceRoutes: asFunction(PerformanceRoutes).singleton()
+    PerformanceRoutes: asFunction(PerformanceRoutes).singleton(),
+    AuthRoutes: asFunction(AuthRoutes).singleton()
   })
   //modelos
   .register({

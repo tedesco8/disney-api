@@ -6,7 +6,7 @@ const morgan = require("morgan")
 require("express-async-errors")
 const { NotFoundMiddleware, ErrorMiddleware } = require("../middlewares");
 
-module.exports = function ({ PerformanceRoutes, FilmRoutes, CharacterRoutes, UserRoutes }) { 
+module.exports = function ({ AuthRoutes, PerformanceRoutes, FilmRoutes, CharacterRoutes, UserRoutes }) { 
   const router = express.Router()
   const apiRoutes = express.Router()
 
@@ -21,6 +21,7 @@ module.exports = function ({ PerformanceRoutes, FilmRoutes, CharacterRoutes, Use
     apiRoutes.use("/user", UserRoutes)
     apiRoutes.use("/film", FilmRoutes)
     apiRoutes.use("/performance", PerformanceRoutes)
+    apiRoutes.use("/auth", AuthRoutes)
 
     router.use("/v1/api", apiRoutes)
     

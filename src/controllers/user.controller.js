@@ -13,12 +13,6 @@ class UserController {
         return res.send(user)
     }
 
-    async getEmail(req, res) {
-        const { userEmail } = req.params
-        const user = await _userService.getUserByEmail(userEmail)
-        return res.send(user)
-    }
-
     async getAll(req, res) {
         const users = await _userService.getAll()
         return res.send(users)
