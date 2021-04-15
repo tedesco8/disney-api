@@ -8,6 +8,7 @@ class UserRepository extends BaseRepository{
     }
 
     async getUserByEmail(email) {
+        console.log(_user)
         return await _user.finOne({
             where: {email:email}
         })
