@@ -1,0 +1,984 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Backend ::disney-api:: App",
+    "version": "1.0.0",
+    "title": "Swagger Disney Api",
+    "contact": {
+      "email": "development@tedesco.es"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/tedesco8/disney-api/blob/main/LICENSE"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/v1/api",
+  "tags": [
+    {
+      "name": "User",
+      "description": "Everything about users"
+    },
+    {
+      "name": "Film",
+      "description": "Everything about films"
+    },
+    {
+      "name": "Character",
+      "description": "Everything about characters"
+    },
+    {
+      "name": "Performance",
+      "description": "Everything about performances"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "paths": {
+    "/auth/signin": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Login",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "object",
+            "in": "body",
+            "type": "object",
+            "description": "Objects",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create user",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "object",
+            "in": "body",
+            "type": "object",
+            "description": "Objects",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Finds All the Users",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      },
+      "post": {
+        "tags": ["User"],
+        "summary": "Update one user",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "object",
+            "in": "body",
+            "type": "object",
+            "description": "Objects",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Find one user",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "User Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "put": {
+        "tags": ["User"],
+        "summary": "Update one user",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "User Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["User"],
+        "summary": "Delete one user",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "User Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization token with admin role",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/character": {
+      "get": {
+        "tags": ["Character"],
+        "summary": "Finds All the Characters",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Character"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Character"],
+        "summary": "Create character",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "object",
+            "in": "body",
+            "type": "model schema",
+            "description": "Objects",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Character"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/character/{id}": {
+      "get": {
+        "tags": ["Character"],
+        "summary": "Find one character",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Character Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Character"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Character"],
+        "summary": "Update one character",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Character Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Character"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Character"],
+        "summary": "Delete one character",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Character Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Character"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/film": {
+      "get": {
+        "tags": ["Film"],
+        "summary": "Finds All the Film",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Film"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Film"],
+        "summary": "Create film",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "object",
+            "in": "body",
+            "type": "model schema",
+            "description": "Objects",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Film"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/film/{id}": {
+      "get": {
+        "tags": ["Film"],
+        "summary": "Find one film",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Film Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Film"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Film"],
+        "summary": "Update one film",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Film Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Film"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Film"],
+        "summary": "Delete one film",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Film Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Film"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/film/{id}/upvote": {
+      "post": {
+        "tags": ["Film"],
+        "summary": "Upvote film",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Film Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Film"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/film/{id}/downvote": {
+      "post": {
+        "tags": ["Film"],
+        "summary": "Downvote film",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Film Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Film"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/performance": {
+      "get": {
+        "tags": ["Performance"],
+        "summary": "Finds All the Performance",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Performance"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Performance"],
+        "summary": "Create performance",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "object",
+            "in": "body",
+            "type": "model schema",
+            "description": "Objects",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Performance"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    },
+    "/performance/{id}": {
+      "get": {
+        "tags": ["Performance"],
+        "summary": "Find one performance",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Performance Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Performance"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Performance"],
+        "summary": "Update one performance",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Performance Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Performance"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Performance"],
+        "summary": "Delete one performance",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Performance Id",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization header for JWT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Performance"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "create_at": {
+          "type": "date"
+        },
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Character": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "biografy": {
+          "type": "string"
+        },
+        "age": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "string"
+        },
+        "create_at": {
+          "type": "date"
+        }
+      }
+    },
+    "Film": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        },
+        "character_id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "image": {
+          "type": "boolean"
+        },
+        "reputation": {
+          "type": "string"
+        },
+        "create_at": {
+          "type": "date"
+        }
+      }
+    },
+    "Performance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "character_id": {
+          "type": "integer"
+        },
+        "film_id": {
+          "type": "string"
+        },
+        "create_at": {
+          "type": "date"
+        }
+      }
+    }
+  }
+}
