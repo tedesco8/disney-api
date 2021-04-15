@@ -1,15 +1,16 @@
 const { Router } = require("express")
+const { AuthMiddleware } = require("../middlewares")
 
 module.exports = function ({ FilmController }) {
   const router = Router()
 
-  router.get("/:filmId", FilmController.get)
-  router.get("", FilmController.getAll)
-  router.put("/:filmId", FilmController.update)
-  router.post("", FilmController.create)
-  router.delete("/:filmId", FilmController.delete)
-  router.post("/:filmId/upvote", FilmController.upvoteFilm);
-  router.post("/:filmId/downvote", FilmController.downvoteFilm);
+  router.get("/:filmId", AuthMiddleware, FilmController.get)
+  router.get("", [AuthMiddleware], FilmController.getAll)
+  router.put("/:filmId", AuthMiddleware, FilmController.update)
+  router.post("", AuthMiddleware, FilmController.create)
+  router.delete("/:filmId", AuthMiddleware, FilmController.delete)
+  router.post("/:filmId/upvote", AuthMiddleware, FilmController.upvoteFilm);
+  router.post("/:filmId/downvote", AuthMiddleware, FilmController.downvoteFilm);
 
   return router
 };
