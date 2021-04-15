@@ -8,6 +8,8 @@ module.exports = function ({ FilmController }) {
   router.put("/:filmId", FilmController.update)
   router.post("", FilmController.create)
   router.delete("/:filmId", FilmController.delete)
+  router.post("/:filmId/upvote", FilmController.upvoteFilm);
+  router.post("/:filmId/downvote", FilmController.downvoteFilm);
 
   return router
 };
